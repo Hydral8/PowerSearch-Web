@@ -15,7 +15,7 @@ function Dashboard() {
         justify="space-between"
         fullWidth
         className={styles.dashboardContainer}
-        style={{ flexGrow: 1 }}
+        style={{ flexGrow: 1, minHeight: "calc(80rem)" }}
       >
         <DashboardNav selected={selected} setSelected={setSelected} />
         <DashboardMain selected={selected} />
