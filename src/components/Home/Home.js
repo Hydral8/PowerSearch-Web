@@ -6,6 +6,7 @@ import styles from "./home.module.scss";
 import Container from "../Container/Container";
 import { Header, P } from "../Typography/Typography";
 import { GetStartedBtn } from "../Button/Button";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
