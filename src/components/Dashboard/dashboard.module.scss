@@ -1,0 +1,17 @@
+.dashboard {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  background: url("../../assets/images/DashboardBG.svg") center / 100% auto;
+}
+
+.dashboardContainer {
+  &::before {
+    content: "";
+  }
+  &::after {
+    content: "";
+  }
+}

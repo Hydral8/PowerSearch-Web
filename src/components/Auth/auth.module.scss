@@ -1,0 +1,27 @@
+.authBG {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow: auto;
+  background: url("../../assets/images/DashboardBG.svg") center / 100% auto;
+}
+
+.bg {
+  // min-height: calc(100vh - 14.25rem);
+  margin-bottom: 1.5rem;
+  background-color: #e8f4ff;
+  padding: 1rem;
+}
+
+.pic {
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+}
+
+.authLink {
+  text-decoration: none;
+  color: "#32A5E4";
+}
