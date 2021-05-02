@@ -1,7 +1,5 @@
 import firebase from "firebase";
 
-console.log(process.env.REACT_APP_API_KEY);
-
 let firebaseConfig = process.env.REACT_APP_SERVICE_ACCT
   ? process.env.REACT_APP_SERVICE_ACCT
   : {
