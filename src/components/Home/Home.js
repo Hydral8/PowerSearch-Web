@@ -18,7 +18,9 @@ function Home() {
         <P color="white" className={styles.heroDescription}>
           The tool that powers through data to give you the insights you need.
         </P>
-        <GetStartedBtn>Get Started</GetStartedBtn>
+        <Link to="/signin">
+          <GetStartedBtn>Get Started</GetStartedBtn>
+        </Link>
       </Container>
     </Container>
   );
