@@ -7,6 +7,7 @@ import { Header, P } from "../../Typography/Typography";
 import sharedStyles from "../shared.module.scss";
 import styles from "./search.module.scss";
 import scrollBarStyles from "../Scrollbar/scrollbar.module.scss";
+import axios from "axios";
 
 function randomColor() {
   // returns a light color
@@ -124,8 +125,9 @@ function Links({ links = [] }, noMargin) {
   );
 }
 
-function sendRequest(query, keywords, links) {
-  //
+function sendRequest(query, keywords, links, setInformation) {
+  // axios.get(url).then(res => {
+  // })
   // return data
 }
 
@@ -154,7 +156,9 @@ function Search({ information, setInformation }) {
         <BaseInputs
           setQuery={setQuery}
           setKeywords={setKeywords}
-          sendRequest={() => sendRequest(query, keywords, links)}
+          sendRequest={() =>
+            sendRequest(query, keywords, links, setInformation)
+          }
         />
         <Keywords keywords={keywords} />
         <LinkInput setLinks={setLinks} />
