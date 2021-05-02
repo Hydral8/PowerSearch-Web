@@ -30,16 +30,6 @@ function RouteNotFound() {
 
 function FunctionalApp() {
   let { user, setUser } = useContext(UserContext);
-  console.log(process.env);
-  React.useEffect(() => {
-    console.log(firebase.auth().currentUser);
-    firebase.auth().onAuthStateChanged((newUser) => {
-      console.log(newUser);
-      if (newUser) {
-        setUser(user);
-      }
-    });
-  }, []);
   return (
     <SnackbarContext>
       <Router history={History}>
@@ -72,14 +62,9 @@ function FunctionalApp() {
 function App() {
   return (
     <div className="App">
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </head>
-      <body>
-        <UserContextProvider>
-          <FunctionalApp />
-        </UserContextProvider>
-      </body>
+      <UserContextProvider>
+        <FunctionalApp />
+      </UserContextProvider>
     </div>
   );
 }
