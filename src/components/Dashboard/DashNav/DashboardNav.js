@@ -52,9 +52,7 @@ function DashboardNav({ selected, location, history }) {
             id={i}
             onClick={() => handleClick(v, history)}
             fill={
-              location.pathname == "/dashboard/" + v.path
-                ? "#FB6D3A"
-                : "#7A67C7"
+              location.pathname == "/dashboard" + v.path ? "#FB6D3A" : "#7A67C7"
             }
             style={{
               cursor: "pointer",
