@@ -1,0 +1,8 @@
+# Function dependencies, for example:
+# package>=version
+nltk==3.6.2
+beautifulsoup4==4.9.3
+requests==2.25.0
+google-cloud-language==2.0.0
+google-auth==1.29.0
+google-cloud==0.34.0

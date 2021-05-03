@@ -41,6 +41,7 @@ function RouteNotFound() {
 
 function DashboardMain({ selected, location }) {
   let [information, setInformation] = React.useState({
+    query: "",
     links: [],
     summaries: [],
     keywords: [],

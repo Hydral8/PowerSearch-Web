@@ -17,6 +17,13 @@ function randomColor() {
   return "#" + hex1.toString(16) + hex2.toString(16) + hex3.toString(16);
 }
 
+function colorize(ar) {
+  return ar.map((v) => ({
+    value: v,
+    color: randomColor(),
+  }));
+}
+
 function BaseInputs({ setQuery, setKeywords, sendRequest }) {
   return (
     <Container row fullWidth justify="space-between" align="flex-end">
@@ -45,7 +52,7 @@ function BaseInputs({ setQuery, setKeywords, sendRequest }) {
         style={{ marginRight: "0.6125rem", marginBottom: "0.6125rem" }}
         onClick={sendRequest}
       >
-        Get Started
+        Search
       </Button>
     </Container>
   );
@@ -59,7 +66,8 @@ function Keyword({ value, color }) {
   );
 }
 
-function Keywords({ keywords = [{}] }, noMargin) {
+function Keywords({ keywords = [{}], noMargin }) {
+  console.log(noMargin);
   return (
     <Container
       row
@@ -106,7 +114,7 @@ function Link({ value, color }) {
   );
 }
 
-function Links({ links = [] }, noMargin) {
+function Links({ links = [], noMargin }) {
   return (
     <Container
       row
@@ -125,24 +133,48 @@ function Links({ links = [] }, noMargin) {
   );
 }
 
+const BASE_URL =
+  "https://us-central1-ruhacks-312105.cloudfunctions.net/summarizeSmooth/hello_world?message=";
 function sendRequest(query, keywords, links, setInformation) {
-  // axios.get(url).then(res => {
-  // })
-  // return data
+  if (links.length == 0) {
+    return;
+  }
+  let link = links[links.length - 1].value;
+  axios.get(BASE_URL + link).then((res) => {
+    let text = res.data;
+    let [
+      summaries,
+      wikilinks,
+      entities,
+      language,
+      score,
+      magnitude,
+    ] = text.split("---");
+    wikilinks = colorize(wikilinks.split(";"));
+    entities = colorize(entities.split(";"));
+
+    console.log([summaries], wikilinks, entities);
+    setInformation({
+      query,
+      links: wikilinks,
+      keywords: entities,
+      summaries: [summaries],
+    });
+  });
 }
 
 function Summary({ v }) {
   console.log(v);
   let match = v.match(/^\[.+?\]/);
   return match ? (
-    <P style={{ alignSelf: "flex-start" }}>
+    <P style={{ alignSelf: "flex-start", textAlign: "left" }}>
       <a href="match[0]" style={{ color: "#32A5E4" }}>
         [SOURCE]
       </a>
       {v.replace(match[0], "")}
     </P>
   ) : (
-    <P style={{ alignSelf: "flex-start" }}>{v}</P>
+    <P style={{ alignSelf: "flex-start", textAlign: "left" }}>{v}</P>
   );
 }
 
@@ -172,7 +204,7 @@ function Search({ information, setInformation }) {
       >
         <Container gap="1.5rem">
           <Header style={{ alignSelf: "flex-start", fontSize: "1.875rem" }}>
-            {information.query}
+            {information.query != "" ? information.query : "NO QUERY"}
           </Header>
           <Container>
             <Keywords keywords={information.keywords} noMargin />

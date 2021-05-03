@@ -7,6 +7,45 @@ import { Keywords, Links, Summary } from "../Search/Search";
 import scrollBarStyles from "../Scrollbar/scrollbar.module.scss";
 import { withRouter } from "react-router";
 
+const searchesData = [
+  {
+    query: "Vegetables in England",
+    keywords: [
+      { value: "vegetables", color: "#ff91ac" },
+      { value: "england", color: "#fcf1bc" },
+    ],
+    links: [{ value: "https://www.bbc.com", color: "#aabc91" }],
+    summaries: [
+      "hello wlrd",
+      "how are you",
+      "[SOURCE] There are many different kinds of vegetables in England. Ranging from cucumbers to lettuce to beets to turnips there is almost every vegetable youc an think of available in England.",
+      "[SOURCE] However, not all these vegetables have a positive effect on your health. In some case, these vegetables may have a NEGATIVE impact on your health. Dr. Maurie Schwartz discusses the implicatinos of pesticide usage on English vegetables ",
+      "[SOURCE] this is a source material",
+      "[SOURCE] this is a source material",
+      "[SOURCE] this is a source material",
+      "[SOURCE] this is a source material",
+    ],
+  },
+  {
+    query: "Vegetables in England",
+    keywords: [
+      { value: "vegetables", color: "#ff91ac" },
+      { value: "england", color: "#fcf1bc" },
+    ],
+    links: [{ value: "https://www.bbc.com", color: "#aabc91" }],
+    summaries: [
+      "hello wlrd",
+      "how are you",
+      "[SOURCE] There are many different kinds of vegetables in England. Ranging from cucumbers to lettuce to beets to turnips there is almost every vegetable youc an think of available in England.",
+      "[SOURCE] However, not all these vegetables have a positive effect on your health. In some case, these vegetables may have a NEGATIVE impact on your health. Dr. Maurie Schwartz discusses the implicatinos of pesticide usage on English vegetables ",
+      "[SOURCE] this is a source material",
+      "[SOURCE] this is a source material",
+      "[SOURCE] this is a source material",
+      "[SOURCE] this is a source material",
+    ],
+  },
+];
+
 function getMoreInformation(information, setInformation, history) {
   setInformation(information);
   console.log(history);
@@ -48,32 +87,7 @@ function PastSearch({ information, setInformation, history }) {
 }
 
 function Searches({ searches, setInformation, history }) {
-  searches = [
-    {
-      query: "Vegetables in England",
-      keywords: [
-        { value: "vegetables", color: "#ff91ac" },
-        { value: "england", color: "#fcf1bc" },
-      ],
-      links: [{ value: "https://www.bbc.com", color: "#aabc91" }],
-      summaries: [
-        "hello wlrd",
-        "how are you",
-        "[SOURCE] this is a source material",
-        "[SOURCE] this is a source material",
-        "[SOURCE] this is a source material",
-        "[SOURCE] this is a source material",
-        "[SOURCE] this is a source material",
-        "[SOURCE] this is a source material",
-        "[SOURCE] this is a source material",
-        "[SOURCE] this is a source material",
-        "[SOURCE] this is a source material",
-        "[SOURCE] this is a source material",
-        "[SOURCE] this is a source material",
-      ],
-    },
-  ];
-  searches = [...searches, ...searches, ...searches];
+  searches = searchesData;
   return (
     <Container
       row
